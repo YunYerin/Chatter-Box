@@ -18,9 +18,10 @@ export default function ChatDataFetching({ chats, setChats }) {
     <div>
       {chats.map((chat, i) => (
         <li key={`${i}-chat`}>
-          <div>{chat.username}</div>
-          <div>{chat.text}</div>
-          <div>{chat.date.toLocaleString('ko-KR')}</div>
+          <div>{`User Name :${chat.username}`}</div>
+          <div>{`Room Name : ${chat.roomname}`}</div>
+          <div>{`Message : ${chat.text}`}</div>
+          <div>{`Time : ${chat.date.toLocaleString('ko-KR')}`}</div>
         </li>
       ))}
     </div>
