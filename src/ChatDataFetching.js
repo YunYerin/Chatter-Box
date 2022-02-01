@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 
-export default function ChatDataFetching() {
-  const [chats, setChats] = useState([])
-
+export default function ChatDataFetching({ chats, setChats }) {
   useEffect(() => {
     axios
       .get('http://35.225.199.142:4000/api/chats')
@@ -14,7 +12,7 @@ export default function ChatDataFetching() {
       .catch(err => {
         console.log(err)
       })
-  }, [])
+  }, [setChats])
 
   return (
     <div>

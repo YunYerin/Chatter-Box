@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function SetNickName() {
-  const [nickName, setNickName] = useState('')
-  const [submitNickName, setSubmitNickname] = useState('')
-
+export default function SetNickName({
+  nickName,
+  setNickName,
+  submitNickName,
+  setSubmitNickname,
+}) {
   return (
     <div>
       <div>
-        <div>{`My NickName : ${submitNickName}`} </div>
-        {/* <div>{nickName}</div> */}
+        <div>My NickName : </div>
+        <div>{submitNickName}</div>
       </div>
       <form
         onSubmit={e => {

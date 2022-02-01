@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function RoomList() {
-  const [roomList, setRoomList] = useState(['Yungooso'])
-  const [room, setRoom] = useState('')
-
+export default function RoomList({ roomList, setRoomList, room, setRoom }) {
   return (
     <div>
       <div>
         {roomList.map((el, i) => (
-          <li key={`${i}-room-number`}>{el}</li>
+          <button key={`${i}-room-number`}>{el}</button>
         ))}
       </div>
       <form

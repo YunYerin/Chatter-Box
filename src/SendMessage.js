@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function SendMessage() {
-  const [message, setMessage] = useState('')
-  const [date, setDate] = useState('')
+export default function SendMessage({ message, setMessage }) {
+  // const [message, setMessage] = useState('')
   // function submit() {
   //   axios({
   //     method: 'post',
@@ -19,7 +18,7 @@ export default function SendMessage() {
         onSubmit={e => {
           e.preventDefault()
           console.log(message)
-          // submit()
+          console.log(new Date())
           setMessage('')
         }}
       >
@@ -27,7 +26,6 @@ export default function SendMessage() {
           type="text"
           onChange={e => {
             setMessage(e.target.value)
-            setDate(new Date())
           }}
           value={message}
         ></input>
