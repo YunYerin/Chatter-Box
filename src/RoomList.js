@@ -1,26 +1,41 @@
 import React from 'react'
 
-export default function RoomList({ roomList, setRoomList, room, setRoom }) {
+export default function RoomList({
+  roomList,
+  setRoomList,
+  writedRoom,
+  setWritedRoom,
+  selectedRoom,
+  setSelectedRoom,
+}) {
   return (
     <div>
       <div>
-        {roomList.map((el, i) => (
-          <button key={`${i}-room-number`}>{el}</button>
+        {roomList.map((room, i) => (
+          <div
+            onClick={() => {
+              setSelectedRoom(room)
+              console.log(selectedRoom)
+            }}
+            key={`${i}-room-number`}
+          >
+            {room}
+          </div>
         ))}
       </div>
       <form
         onSubmit={e => {
           e.preventDefault()
-          setRoomList([...roomList, room])
-          setRoom('')
+          setRoomList([...roomList, writedRoom])
+          setWritedRoom('')
         }}
       >
         <input
           type="text"
           onChange={e => {
-            setRoom(e.target.value)
+            setWritedRoom(e.target.value)
           }}
-          value={room}
+          value={writedRoom}
         ></input>
         <input type="submit" value="방만들기"></input>
       </form>

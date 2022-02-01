@@ -9,7 +9,8 @@ export default function ChatterBox() {
   const [submitNickName, setSubmitNickname] = useState('')
 
   const [roomList, setRoomList] = useState(['Yungooso'])
-  const [room, setRoom] = useState('')
+  const [writedRoom, setWritedRoom] = useState('')
+  const [selectedRoom, setSelectedRoom] = useState('')
 
   const [chats, setChats] = useState([])
 
@@ -27,11 +28,18 @@ export default function ChatterBox() {
       <RoomList
         roomList={roomList}
         setRoomList={setRoomList}
-        room={room}
-        setRoom={setRoom}
+        writedRoom={writedRoom}
+        setWritedRoom={setWritedRoom}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
       />
       <ChatDataFetching chats={chats} setChats={setChats} />
-      <SendMessage message={message} setMessage={setMessage} />
+      <SendMessage
+        message={message}
+        setMessage={setMessage}
+        submitNickName={submitNickName}
+        selectedRoom={selectedRoom}
+      />
     </div>
   )
 }
