@@ -6,6 +6,8 @@ export default function SendMessage({
   setMessage,
   submitNickName,
   selectedRoom,
+  setRoomList,
+  chats,
 }) {
   function onSendMessage() {
     axios
@@ -16,7 +18,6 @@ export default function SendMessage({
       })
       .then(function (response) {
         console.log(response)
-        window.location.reload()
       })
       .catch(function (error) {
         console.log(error)
@@ -31,12 +32,6 @@ export default function SendMessage({
     } else if (submitNickName.length === 0 && selectedRoom.length === 0) {
       alert('Please Write Your NickName AND Select Room')
     } else {
-      console.log(submitNickName)
-      console.log(`username type: ${typeof submitNickName}`)
-      console.log(message)
-      console.log(`message type: ${typeof message}`)
-      console.log(selectedRoom)
-      console.log(`roomname type: ${typeof selectedRoom}`)
       onSendMessage()
       setMessage('')
     }
