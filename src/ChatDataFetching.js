@@ -45,19 +45,16 @@ export default function ChatDataFetching({
       .catch(err => {
         console.log(err)
       })
-  }, [selectedRoom, setChatsOfRoom, setChats, setRoomList, setRoomListViewer])
-
-  console.log(chatsOfRoom)
-  console.log(selectedRoom)
+  }, [setChats, setRoomList, setRoomListViewer, selectedRoom, setChatsOfRoom])
 
   return (
     <ChattingWrapper>
       {chatsOfRoom.map((chat, i) => (
         <ChatMessage key={`${i}-chat`}>
-          <div>{`User Name :${chatsOfRoom.username}`}</div>
-          <div>{`Room Name : ${chatsOfRoom.roomname}`}</div>
-          <div>{`Message : ${chatsOfRoom.text}`}</div>
-          {/* <div>{`Time : ${chat.date.toLocaleString('ko-KR')}`}</div> */}
+          <div>{`User Name :${chat.username}`}</div>
+          <div>{`Room Name : ${chat.roomname}`}</div>
+          <div>{`Message : ${chat.text}`}</div>
+          <div>{`Time : ${chat.date.toLocaleString('ko-KR')}`}</div>
         </ChatMessage>
       ))}
     </ChattingWrapper>
@@ -65,7 +62,7 @@ export default function ChatDataFetching({
 }
 
 const ChattingWrapper = styled.div`
-  height: 30rem;
+  height: 35rem;
   border: solid yellow;
   overflow: scroll;
 `

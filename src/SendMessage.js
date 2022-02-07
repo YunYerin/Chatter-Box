@@ -1,13 +1,12 @@
 import React from 'react'
 import axios from 'axios'
+import styled from '@emotion/styled'
 
 export default function SendMessage({
   message,
   setMessage,
   submitNickName,
   selectedRoom,
-  setRoomList,
-  chats,
 }) {
   function onSendMessage() {
     axios
@@ -37,6 +36,8 @@ export default function SendMessage({
     }
   }
 
+  console.log(selectedRoom)
+
   return (
     <div>
       <form
@@ -45,15 +46,29 @@ export default function SendMessage({
           onEnterSendMessage()
         }}
       >
-        <input
+        <MessageInput
           type="text"
           onChange={e => {
             setMessage(e.target.value)
           }}
           value={message}
-        ></input>
-        <input type="submit" value="send message"></input>
+        ></MessageInput>
+        <SendButton type="submit" value="send message"></SendButton>
       </form>
     </div>
   )
 }
+
+const MessageInput = styled.input`
+  height: 2rem;
+  width: 80%;
+  font-size: 1rem;
+`
+
+const SendButton = styled.input`
+  height: 2.3rem;
+  width: 17%;
+  margin-left: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+`

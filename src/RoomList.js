@@ -10,10 +10,12 @@ export default function RoomList({
   roomListViewer,
   setRoomListViewer,
 }) {
-  // console.log(selectedRoom)
   return (
     <div>
-      <RoomListIndex>Room List</RoomListIndex>
+      <Rooms>
+        <div>Room Name :</div>
+        <SelectRoom>{selectedRoom}</SelectRoom>
+      </Rooms>
       <RoomListWrapper>
         {roomListViewer.map((room, i) => (
           <RoomName
@@ -49,13 +51,21 @@ export default function RoomList({
   )
 }
 
-const RoomListIndex = styled.div`
+const Rooms = styled.div`
   margin-top: 0.5rem;
+  display: flex;
   font-size: 1.2rem;
 `
+
+const SelectRoom = styled.div`
+  font-weight: bold;
+  color: #000069;
+  margin-left: 0.5rem;
+`
+
 const RoomListWrapper = styled.div`
   width: 23rem;
-  height: 5rem;
+  height: 10rem;
   border: solid;
   margin-top: 0.2rem;
   overflow: scroll;
@@ -64,10 +74,15 @@ const RoomListWrapper = styled.div`
   flex-wrap: nowrap;
 `
 const RoomName = styled.div`
-  height: 1.2rem;
+  height: 1rem;
+  width: auto;
+  padding: 0.15rem;
+  padding-left: 0.5rem;
   font-size: 1rem;
   border: solid 0.01rem;
+  border-radius: 0.2rem;
   margin-top: 0.3rem;
+  cursor: pointer;
 `
 
 const SetRoomNameWrapper = styled.form`

@@ -39,6 +39,8 @@ export default function ChatterBox() {
           roomListViewer={roomListViewer}
           setRoomListViewer={setRoomListViewer}
         />
+      </NickNameAndRoomSetting>
+      <Chatting>
         <ChatDataFetching
           chats={chats}
           setChats={setChats}
@@ -49,14 +51,11 @@ export default function ChatterBox() {
           chatsOfRoom={chatsOfRoom}
           setChatsOfRoom={setChatsOfRoom}
         />
-      </NickNameAndRoomSetting>
-      <Chatting>
         <SendMessage
           message={message}
           setMessage={setMessage}
           submitNickName={submitNickName}
-          setRoomList={setRoomList}
-          chats={chats}
+          selectedRoom={selectedRoom}
         />
       </Chatting>
     </ChatterBoxWrapper>
@@ -74,12 +73,12 @@ const ChatterBoxWrapper = styled.div`
   border: solid red;
 `
 
-const Chatting = styled.div`
-  flex: auto;
-  border: solid blue;
+const NickNameAndRoomSetting = styled.div`
+  flex: 4;
+  border: solid green;
 `
 
-const NickNameAndRoomSetting = styled.div`
-  flex: auto;
-  border: solid green;
+const Chatting = styled.div`
+  flex: 8;
+  border: solid blue;
 `
