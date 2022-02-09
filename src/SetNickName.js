@@ -49,6 +49,7 @@ const MyNickName = styled.div`
 
 const SetNickNameWrapper = styled.form`
   margin-top: 0.2rem;
+  display: flex;
 `
 const NickNameInput = styled.input`
   height: 1.5rem;

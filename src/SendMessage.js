@@ -7,6 +7,7 @@ export default function SendMessage({
   setMessage,
   submitNickName,
   selectedRoom,
+  setChats,
 }) {
   function onSendMessage() {
     axios
@@ -23,6 +24,20 @@ export default function SendMessage({
       })
   }
 
+  // setInterval(
+  //   () =>
+  //     axios
+  //       .get('http://35.225.199.142:4000/api/chats')
+  //       .then(res => {
+  //         // console.log(res.data)
+  //         setChats(res.data.data)
+  //       })
+  //       .catch(err => {
+  //         console.log(err)
+  //       }),
+  //   1000
+  // )
+
   function onEnterSendMessage() {
     if (submitNickName.length === 0) {
       alert('Please Write Your NickName')
@@ -35,8 +50,6 @@ export default function SendMessage({
       setMessage('')
     }
   }
-
-  console.log(selectedRoom)
 
   return (
     <div>

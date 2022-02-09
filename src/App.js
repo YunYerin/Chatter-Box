@@ -19,6 +19,17 @@ export default function ChatterBox() {
 
   const [message, setMessage] = useState('')
 
+  // setInterval(() => {
+  //   axios
+  //     .get('http://35.225.199.142:4000/api/chats')
+  //     .then(res => {
+  //       setChats(res.data.data)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // })
+
   return (
     <ChatterBoxWrapper>
       <NickNameAndRoomSetting>
@@ -56,6 +67,7 @@ export default function ChatterBox() {
           setMessage={setMessage}
           submitNickName={submitNickName}
           selectedRoom={selectedRoom}
+          setChats={setChats}
         />
       </Chatting>
     </ChatterBoxWrapper>
@@ -70,15 +82,14 @@ const ChaaterBox = styled.div`
 const ChatterBoxWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  border: solid red;
 `
 
 const NickNameAndRoomSetting = styled.div`
   flex: 4;
-  border: solid green;
 `
 
 const Chatting = styled.div`
   flex: 8;
-  border: solid blue;
+  border: solid black;
+  margin-right: 1rem;
 `

@@ -87,6 +87,7 @@ const RoomName = styled.div`
 
 const SetRoomNameWrapper = styled.form`
   margin-top: 0.2rem;
+  display: flex;
 `
 
 const RoomNameInput = styled.input`

@@ -47,6 +47,20 @@ export default function ChatDataFetching({
       })
   }, [setChats, setRoomList, setRoomListViewer, selectedRoom, setChatsOfRoom])
 
+  // setInterval(
+  //   () =>
+  //     axios
+  //       .get('http://35.225.199.142:4000/api/chats')
+  //       .then(res => {
+  //         // console.log(res.data)
+  //         setChats(res.data.data)
+  //       })
+  //       .catch(err => {
+  //         console.log(err)
+  //       }),
+  //   3000
+  // )
+
   return (
     <ChattingWrapper>
       {chatsOfRoom.map((chat, i) => (
@@ -63,7 +77,7 @@ export default function ChatDataFetching({
 
 const ChattingWrapper = styled.div`
   height: 35rem;
-  border: solid yellow;
+  border: solid gray;
   overflow: scroll;
 `
 const ChatMessage = styled.div`
