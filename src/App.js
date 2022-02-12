@@ -19,17 +19,6 @@ export default function ChatterBox() {
 
   const [message, setMessage] = useState('')
 
-  // setInterval(() => {
-  //   axios
-  //     .get('http://35.225.199.142:4000/api/chats')
-  //     .then(res => {
-  //       setChats(res.data.data)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // })
-
   return (
     <ChatterBoxWrapper>
       <NickNameAndRoomSetting>
@@ -67,7 +56,6 @@ export default function ChatterBox() {
           setMessage={setMessage}
           submitNickName={submitNickName}
           selectedRoom={selectedRoom}
-          setChats={setChats}
         />
       </Chatting>
     </ChatterBoxWrapper>

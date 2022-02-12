@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import styled from '@emotion/styled'
+import { set } from 'lodash'
 
 export default function ChatDataFetching({
   chats,
@@ -15,8 +16,9 @@ export default function ChatDataFetching({
     axios
       .get('http://35.225.199.142:4000/api/chats')
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setChats(res.data.data)
+
         function updateRooms() {
           const dupRooms = []
           const rooms = []
@@ -39,6 +41,7 @@ export default function ChatDataFetching({
             setChatsOfRoom(messagesOfRoom)
           }
         }
+
         updateRooms()
         loadChatsOfRoom()
       })
@@ -47,19 +50,35 @@ export default function ChatDataFetching({
       })
   }, [setChats, setRoomList, setRoomListViewer, selectedRoom, setChatsOfRoom])
 
-  // setInterval(
-  //   () =>
-  //     axios
-  //       .get('http://35.225.199.142:4000/api/chats')
-  //       .then(res => {
-  //         // console.log(res.data)
-  //         setChats(res.data.data)
-  //       })
-  //       .catch(err => {
-  //         console.log(err)
-  //       }),
-  //   3000
-  // )
+  // useEffect(() => {
+  //   axios
+  //     .get('http://35.225.199.142:4000/api/chats')
+  //     .then(res => {
+  //       setInterval(() => {
+  //         if (chats.length !== res.data.data.length) {
+  //           setChats(res.data.data)
+  //         }
+  //       }, 500)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }, [chats.length, setChats])
+
+  useEffect(() => {
+    const fetchData = setInterval(() => {
+      console.log('setInteral 실행')
+      axios.get('http://35.225.199.142:4000/api/chats').then(res => {
+        if (chats.length !== res.data.data.length) {
+          // console.log(chats, res.data.data)
+          setChats(res.data.data)
+        }
+      })
+    })
+    return () => {
+      clearInterval(fetchData)
+    }
+  }, [])
 
   return (
     <ChattingWrapper>

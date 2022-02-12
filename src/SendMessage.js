@@ -7,7 +7,6 @@ export default function SendMessage({
   setMessage,
   submitNickName,
   selectedRoom,
-  setChats,
 }) {
   function onSendMessage() {
     axios
@@ -16,27 +15,13 @@ export default function SendMessage({
         text: message,
         roomname: selectedRoom,
       })
-      .then(function (response) {
-        console.log(response)
+      .then(function (res) {
+        console.log(res)
       })
       .catch(function (error) {
         console.log(error)
       })
   }
-
-  // setInterval(
-  //   () =>
-  //     axios
-  //       .get('http://35.225.199.142:4000/api/chats')
-  //       .then(res => {
-  //         // console.log(res.data)
-  //         setChats(res.data.data)
-  //       })
-  //       .catch(err => {
-  //         console.log(err)
-  //       }),
-  //   1000
-  // )
 
   function onEnterSendMessage() {
     if (submitNickName.length === 0) {
