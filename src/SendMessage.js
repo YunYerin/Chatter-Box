@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import styled from '@emotion/styled'
+import API from './api'
 
 export default function SendMessage({
   message,
@@ -8,19 +9,8 @@ export default function SendMessage({
   submitNickName,
   selectedRoom,
 }) {
-  function onSendMessage() {
-    axios
-      .post('http://35.225.199.142:4000/api/chats', {
-        username: submitNickName,
-        text: message,
-        roomname: selectedRoom,
-      })
-      .then(function (res) {
-        console.log(res)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+  async function onSendMessage() {
+    const chat = await API.sendMessage(submitNickName, message, selectedRoom)
   }
 
   function onEnterSendMessage() {
